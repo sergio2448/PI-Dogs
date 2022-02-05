@@ -1,0 +1,142 @@
+body{
+  margin: 0;
+  padding: 0;
+  background: rgb(204, 204, 204);
+}
+
+main{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+ .container{
+  width: 80%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-areas: "cover content";
+  box-shadow: -2px 0px 33px 0px rgba(0, 0, 0, 0, 75);
+}
+
+.cover{
+  grid-area: cover;
+  height: 80vh;
+  background-size: cover;
+  background-position: center center;
+}
+
+.content{
+  grid-area: content;
+  background: #f2fbdd;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: space-between;
+}
+
+.nav{
+  margin: 10px 20px;
+  height: 40px;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  color: gray;
+}
+
+.content-body{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 34px;
+  height: 80%;
+}
+
+.pages{
+  width: 20%;
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 10px;
+  color: gray;
+  position: relative;
+  transform: translateY(38px);
+}
+
+.pages span{
+  margin-top: 15px;
+  margin-bottom: 100px;
+}
+
+.black-label{
+  width: 80%;
+}
+
+.black-label p{
+  font-size: 13px;
+  color: gray;
+  width: 70%;
+  height: 30px;
+}
+
+.title{
+  font-size: 60px;
+  padding-bottom: 20px;
+}
+
+.prix{
+  margin: 50px 0px;
+  width: 45;
+  display: flex;
+  justify-content: space-between;
+  border-left: 4px solid rgb(255, 177, 33);
+}
+
+.prix span{
+  padding-left: 10px;
+}
+
+.crt{
+  color: gray;
+  left: 20px;
+  border-bottom: 1px solid rgb(177, 177, 177);
+}
+
+.active{
+  color: black;
+  position: relative;
+  transform: translateX(60px);
+}
+
+.active::before{
+  position: absolute;
+  content: "";
+  display: block;
+  width: 67px;
+  right: 117%;
+  top: 45%;
+  background-color: #555;
+  height: .2em;
+  min-height: 1px;
+  z-index: 1;
+}
+
+.move{
+  margin-top: 64px;
+  padding-bottom: 20px;
+  padding-right: 0px;
+  padding-left: 50px;
+}
+
+.botons {
+  width: 50%;
+  background: #024959;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  color: white;
+  margin: 16px 17px;
+  font-size: 16px;
+}

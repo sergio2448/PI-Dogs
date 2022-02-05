@@ -1,0 +1,82 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url(/home/sergio/Documents/HENRY/PI/PI-Dogs-main/client/src/assets/teq.jpg)
+}
+
+.form-register {
+  width: 400px;
+  background: #24303c;
+  padding: 30px;
+  margin: auto;
+  margin-top: 100px;
+  border-radius: 4px;
+  color: white;
+  box-shadow: 7px 13px 37px #000;
+}
+
+.form-register h1 {
+  font-size: 23px;
+  margin-bottom: 20px;
+}
+
+.form-register ul li {
+  list-style: none;
+}
+
+.controls {
+  width: 100%;
+  background: #24303c;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  border: 1px solid #1f53c5;
+  font-size: 18px;
+  color: white;
+}
+
+.form-register p {
+  height: 40px;
+  text-align: center;
+  font-size: 18px;
+  line-height: 40px;
+}
+
+.form-register a {
+  color: white;
+  text-decoration: none;
+}
+
+.form-register a:hover {
+  color: white;
+  text-decoration: underline;
+}
+
+.form-register .botons {
+  width: 40%;
+  background: #024959;
+  border: none;
+  border-radius: 4px;
+  padding: 12px;
+  color: white;
+  margin: 16px 17px;
+  font-size: 16px;
+}
+
+.selects {
+  width: 85%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0);
+  font-size: 16px;
+  padding: 12px;
+  background: #4d5061;
+  color: white;
+  margin: 16px 0;
+  margin-top: 3px;
+  border: none;
+  border-radius: 4px;
+}
+
