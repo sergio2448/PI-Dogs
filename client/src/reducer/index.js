@@ -12,6 +12,7 @@ const rootReducer = (state = initialState, action) => {
         ...state,
         dogs: action.payload,
         alldogs: action.payload,
+        detail: []
       };
     case "GET_DOGS_BY_TEMPERAMENT":
       return {
@@ -29,6 +30,7 @@ const rootReducer = (state = initialState, action) => {
         dogs: action.payload,
       };
     case "GET_DOGS_BY_ID":
+      console.log('payload detail', action.payload);
       return {
         ...state,
         detail: action.payload,

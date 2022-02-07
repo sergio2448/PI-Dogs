@@ -11,11 +11,12 @@ const Card = ({ name, image, temperament, weight, id }) => {
         </Link>
         {/* <img className='imgc' src='https://www.webconsultas.com/sites/default/files/styles/wc_adaptive_image__small/public/temas/test-madurez_1.jpg' alt=''/> */}
         <h2>{name}</h2>
-        <p>{weight}</p>
+        <p>{weight} (kg)</p>
       </div>
       <hr/>
       <div className='card__description'>
-        <p>{temperament}</p>
+        <label><strong>Temperamentos</strong></label>
+        <p>{temperament ? temperament : 'Temperament Not Found'}</p>
       </div>
       <hr/>
       <div className='card__button'>

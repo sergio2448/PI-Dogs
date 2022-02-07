@@ -36,6 +36,7 @@ const Home = () => {
   const handleFilterByName = (e) => {
     e.preventDefault();
     dispatch(getDogsByName(name));
+    setName('')
   };
 
   const handleFilterByTemperament = (e) => {
@@ -97,11 +98,12 @@ const Home = () => {
         </div>
       </section>
       <div className='paginationh' >
+        {dogsAll.length > 8 ?
         <Pagination
           dogsAll={dogsAll.length}
           dogsPerPage={dogsPerPage}
           pagination={pagination}
-        />
+        /> : null}
       </div>
       <div className="grid">
         {currentDogs &&

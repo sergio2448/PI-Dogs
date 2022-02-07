@@ -12,6 +12,7 @@ const Detail = () => {
   useEffect(() => {
     dispatch(getDogsById(id))
   }, [])
+
 console.log('detail', detail);
   return (
     <main>
@@ -19,7 +20,7 @@ console.log('detail', detail);
         <div className='cover'><img src={detail[0] && detail[0].image} width="500px" height="622.4px" alt='not found' /></div>
         <div className='content'>
           <div className='nav'>
-            <span className='log'>DOGS</span>
+            <span className='log'>HENRY DOGS</span>
             <span></span>
           </div>
         <div className='content-body'>
@@ -30,7 +31,7 @@ console.log('detail', detail);
             <span>04</span>
           </div>
         <div className='black-label'>
-          <span className='title'><b>{detail[0] && detail[0].name ? <h6>{detail[0].name}</h6> : <h6>Perro no encontrado</h6>}</b></span>
+          <span className='title'><b>{detail[0] && detail[0].name ? <h6>{detail[0].name}</h6> : <h6>Cargando...</h6>}</b></span>
           <div className='move'>
             <p>Peso: {detail[0] && detail[0].weight}</p>
             <p>Altura: {detail[0] && detail[0].height}</p>

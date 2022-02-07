@@ -70,6 +70,7 @@ const Form = () => {
   }
 
   console.log('inputTemperaments', input.temperament);
+  console.log('input', input);
 
   return (
     <div>
@@ -81,7 +82,7 @@ const Form = () => {
             value={input.name}
             name="name"
             onChange={handleChange}
-            placeholder='Ingrese el nombre'
+            placeholder='Ingrese el Nombre'
           />
           {errors.name && <p>{errors.name}</p>}
           <input
@@ -90,7 +91,7 @@ const Form = () => {
             value={input.image}
             name="image"
             onChange={handleChange}
-            placeholder='Ingrese la imagen'
+            placeholder='Ingrese la Imagen'
           />
           <input
             className='controls'
@@ -114,7 +115,7 @@ const Form = () => {
             value={input.life_span}
             name="life_span"
             onChange={handleChange}
-            placeholder='Ingrese los años de vida'
+            placeholder='Ingrese Años de vida'
           />
         <p>Seleccione Temperamento</p>
         <select className='selects' onChange={(e) => handleSelect(e)}>
@@ -123,7 +124,7 @@ const Form = () => {
           ))}
         </select>
         <ul>
-          <li>{input.temperament && input.temperament.map((e) => e + ", ")}</li>
+          <li>{input.temperament && input.temperament.map((e) => e + " ")}</li>
         </ul>
 
         <button className='botons' type="submit">Registrar</button>

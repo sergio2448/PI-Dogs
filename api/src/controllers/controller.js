@@ -122,7 +122,7 @@ const getAllTemperament = async (req, res) => {
 const createDog = async (req, res) => {
   try {
     let { name, weight, height, life_span, temperament, image } = req.body;
-
+    console.log('tempString', temperament.toString());
     let newDog = await Dog.create({
       name,
       weight,
@@ -134,6 +134,7 @@ const createDog = async (req, res) => {
     let dogDb = await Temperament.findAll({
       where: { temperament: temperament },
     });
+    console.log('dogDb', dogDb);
     newDog.addTemperament(dogDb);
     res.send("Perro creado con éxito");
   } catch (error) {
