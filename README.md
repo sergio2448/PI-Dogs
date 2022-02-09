@@ -2,8 +2,8 @@
 
 <div>
 <img align="left" src="https://user-images.githubusercontent.com/84557725/153262063-d68a0ff5-e77b-4db9-bb39-df2e2ef470a7.png" alt="Principal" width="30%"/>
-<img align="center" src="https://user-images.githubusercontent.com/84557725/153262011-fa3d70d0-a4a9-4115-93d3-d4be021eb8d9.png" alt="Home" width="30%"/>
-<img align="right" src="https://user-images.githubusercontent.com/84557725/153262048-abaea3cd-7b24-4df6-a3cb-da4e380a55e9.png" alt="Form" width="30%"/>
+<img align="right" src="https://user-images.githubusercontent.com/84557725/153262011-fa3d70d0-a4a9-4115-93d3-d4be021eb8d9.png" alt="Home" width="30%"/>
+<img align="center" src="https://user-images.githubusercontent.com/84557725/153262048-abaea3cd-7b24-4df6-a3cb-da4e380a55e9.png" alt="Form" width="30%"/>
 </div>
 
 ## Enunciado
