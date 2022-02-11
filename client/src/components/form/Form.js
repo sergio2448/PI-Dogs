@@ -18,11 +18,29 @@ const validate = (input) => {
   } else if (!expresiones.image.test(input.image)) {
     errors.image = "URL no válida";
   } else if (!expresiones.height.test(input.height)) {
-    errors.height = "Formato no válido: (12 - 17)";
+    errors.height = "Formato no válido, ejemplo: (12 - 17)";
+  } else if (
+    parseInt(input.height.split(" - ").reverse()) -
+      parseInt(input.height.split(" - ")) <=
+    0
+  ) {
+    errors.height = "El formato es: min - max";
   } else if (!expresiones.weight.test(input.weight)) {
-    errors.weight = "Formato no válido: (12 - 17)";
+    errors.weight = "Formato no válido, ejemplo: (12 - 17)";
+  } else if (
+    parseInt(input.weight.split(" - ").reverse()) -
+      parseInt(input.weight.split(" - ")) <=
+    0
+  ) {
+    errors.weight = "El formato es: min - max";
   } else if (!expresiones.life_span.test(input.life_span)) {
-    errors.life_span = "Formato no válido: (12 - 17)";
+    errors.life_span = "Formato no válido, ejemplo: (12 - 17)";
+  } else if (
+    parseInt(input.life_span.split(" - ").reverse()) -
+      parseInt(input.life_span.split(" - ")) <=
+    0
+  ) {
+    errors.life_span = "El formato es: min - max";
   }
   return errors;
 };
