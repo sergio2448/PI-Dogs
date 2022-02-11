@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getTemperaments, postDog } from "../../actions/index";
-import './Form.css';
-
-
-
+import "./Form.css";
 
 const validate = (input) => {
   let errors = {};
@@ -14,27 +11,23 @@ const validate = (input) => {
     image: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/, // URL.
     height: /^\d+\s-\s\d+$/, // Numeros, espacios y guion.
     weight: /^\d+\s-\s\d+$/, // Numeros, espacios y guion.
-    life_span: /^\d+\s-\s\d+$/ // Numeros, espacios y guion.
+    life_span: /^\d+\s-\s\d+$/, // Numeros, espacios y guion.
+  };
+  if (!expresiones.name.test(input.name)) {
+    errors.name = "No se admiten números ni caracteres especiales";
+  } else if (!expresiones.image.test(input.image)) {
+    errors.image = "URL no válida";
+  } else if (!expresiones.height.test(input.height)) {
+    errors.height = "Formato no válido: (12 - 17)";
+  } else if (!expresiones.weight.test(input.weight)) {
+    errors.weight = "Formato no válido: (12 - 17)";
+  } else if (!expresiones.life_span.test(input.life_span)) {
+    errors.life_span = "Formato no válido: (12 - 17)";
   }
-  if(!expresiones.name.test(input.name)) {
-    errors.name = "No se admiten números ni caracteres especiales"
-  } else if(!expresiones.image.test(input.image)) {
-    errors.image = "URL no válida"
-  } else if(!expresiones.height.test(input.height)) {
-    errors.height = "Formato no válido: (12 - 17)"
-  } else if(!expresiones.weight.test(input.weight)) {
-    errors.weight = "Formato no válido: (12 - 17)"
-  } else if(!expresiones.life_span.test(input.life_span)) {
-    errors.life_span = "Formato no válido: (12 - 17)"
-  } 
   return errors;
-}
+};
 
 const Form = () => {
-
- 
-
-
   const dispatch = useDispatch();
   const history = useNavigate();
   const temperaments = useSelector((state) => state.temperaments);
@@ -89,58 +82,57 @@ const Form = () => {
     }
   }
 
-
   return (
     <div>
-      <form className='form-register' onSubmit={(e) => handleSubmit(e)}>
-      <h1>Formulario de Registro</h1>
-          <input
-            className='controls'
-            type="text"
-            value={input.name}
-            name="name"
-            onChange={handleChange}
-            placeholder='Ingrese el Nombre'
-          />
-          {errors.name && <p>{errors.name}</p>}
-          <input
-            className='controls'
-            type="text"
-            value={input.image}
-            name="image"
-            onChange={handleChange}
-            placeholder='Ingrese la Imagen'
-          />
-          {errors.image && <p>{errors.image}</p>}
-          <input
-            className='controls'
-            type="text"
-            value={input.height}
-            name="height"
-            onChange={handleChange}
-            placeholder='Ingrese rango de Altura'
-          />
-          {errors.height && <p>{errors.height}</p>}
-          <input
-            className='controls'
-            type="text"
-            value={input.weight}
-            name="weight"
-            onChange={handleChange}
-            placeholder='Ingrese rango de Peso'
-          />
-          {errors.weight && <p>{errors.weight}</p>}
-          <input
-            className='controls'
-            type="text"
-            value={input.life_span}
-            name="life_span"
-            onChange={handleChange}
-            placeholder='Ingrese Años de vida'
-          />
-          {errors.life_span && <p>{errors.life_span}</p>}
+      <form className="form-register" onSubmit={(e) => handleSubmit(e)}>
+        <h1>Formulario de Registro</h1>
+        <input
+          className="controls"
+          type="text"
+          value={input.name}
+          name="name"
+          onChange={handleChange}
+          placeholder="Ingrese el Nombre"
+        />
+        {errors.name && <p>{errors.name}</p>}
+        <input
+          className="controls"
+          type="text"
+          value={input.image}
+          name="image"
+          onChange={handleChange}
+          placeholder="Ingrese la Imagen"
+        />
+        {errors.image && <p>{errors.image}</p>}
+        <input
+          className="controls"
+          type="text"
+          value={input.height}
+          name="height"
+          onChange={handleChange}
+          placeholder="Ingrese rango de Altura"
+        />
+        {errors.height && <p>{errors.height}</p>}
+        <input
+          className="controls"
+          type="text"
+          value={input.weight}
+          name="weight"
+          onChange={handleChange}
+          placeholder="Ingrese rango de Peso"
+        />
+        {errors.weight && <p>{errors.weight}</p>}
+        <input
+          className="controls"
+          type="text"
+          value={input.life_span}
+          name="life_span"
+          onChange={handleChange}
+          placeholder="Ingrese Años de vida"
+        />
+        {errors.life_span && <p>{errors.life_span}</p>}
         <p>Seleccione Temperamento</p>
-        <select className='selects' onChange={(e) => handleSelect(e)}>
+        <select className="selects" onChange={(e) => handleSelect(e)}>
           {temperaments.map((temp) => (
             <option value={temp.temperament}>{temp.temperament}</option>
           ))}
@@ -149,11 +141,15 @@ const Form = () => {
           <li>{input.temperament && input.temperament.map((e) => e + " ")}</li>
         </ul>
 
-        <button className='botons' type="submit">Registrar</button>
+        <button className="botons" type="submit">
+          Registrar
+        </button>
         <Link to="/home">
-          <button className='botons'>Volver</button>
+          <button className="botons">Volver</button>
         </Link>
-        <p><a href="/form">Nuevo Registro</a></p>
+        <p>
+          <a href="/form">Nuevo Registro</a>
+        </p>
       </form>
     </div>
   );
