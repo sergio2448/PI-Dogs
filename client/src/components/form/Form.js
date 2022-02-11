@@ -4,17 +4,37 @@ import { Link, useNavigate } from "react-router-dom";
 import { getTemperaments, postDog } from "../../actions/index";
 import './Form.css';
 
-function validate(input) {
+
+
+
+const validate = (input) => {
   let errors = {};
-  if (!input.name) {
-    errors.name = "Se requiere un nombre";
-  } else if (!input.life_span) {
-    errors.life_span = "Este campo es requerido";
+  const expresiones = {
+    name: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+    image: /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/, // URL.
+    height: /^\d+\s-\s\d+$/, // Numeros, espacios y guion.
+    weight: /^\d+\s-\s\d+$/, // Numeros, espacios y guion.
+    life_span: /^\d+\s-\s\d+$/ // Numeros, espacios y guion.
   }
+  if(!expresiones.name.test(input.name)) {
+    errors.name = "No se admiten números ni caracteres especiales"
+  } else if(!expresiones.image.test(input.image)) {
+    errors.image = "URL no válida"
+  } else if(!expresiones.height.test(input.height)) {
+    errors.height = "Formato no válido: (12 - 17)"
+  } else if(!expresiones.weight.test(input.weight)) {
+    errors.weight = "Formato no válido: (12 - 17)"
+  } else if(!expresiones.life_span.test(input.life_span)) {
+    errors.life_span = "Formato no válido: (12 - 17)"
+  } 
   return errors;
 }
 
 const Form = () => {
+
+ 
+
+
   const dispatch = useDispatch();
   const history = useNavigate();
   const temperaments = useSelector((state) => state.temperaments);
@@ -69,8 +89,6 @@ const Form = () => {
     }
   }
 
-  console.log('inputTemperaments', input.temperament);
-  console.log('input', input);
 
   return (
     <div>
@@ -93,6 +111,7 @@ const Form = () => {
             onChange={handleChange}
             placeholder='Ingrese la Imagen'
           />
+          {errors.image && <p>{errors.image}</p>}
           <input
             className='controls'
             type="text"
@@ -101,6 +120,7 @@ const Form = () => {
             onChange={handleChange}
             placeholder='Ingrese rango de Altura'
           />
+          {errors.height && <p>{errors.height}</p>}
           <input
             className='controls'
             type="text"
@@ -109,6 +129,7 @@ const Form = () => {
             onChange={handleChange}
             placeholder='Ingrese rango de Peso'
           />
+          {errors.weight && <p>{errors.weight}</p>}
           <input
             className='controls'
             type="text"
@@ -117,6 +138,7 @@ const Form = () => {
             onChange={handleChange}
             placeholder='Ingrese Años de vida'
           />
+          {errors.life_span && <p>{errors.life_span}</p>}
         <p>Seleccione Temperamento</p>
         <select className='selects' onChange={(e) => handleSelect(e)}>
           {temperaments.map((temp) => (
