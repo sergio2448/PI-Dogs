@@ -1,3 +1,5 @@
+import { GET_DOGS, GET_DOGS_BY_NAME, GET_DOGS_BY_ID, GET_TEMPERAMENTS, GET_DOGS_BY_TEMPERAMENT, FILTERS } from '../types';
+
 const initialState = {
   dogs: [],
   alldogs: [],
@@ -7,35 +9,35 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_DOGS":
+    case GET_DOGS:
       return {
         ...state,
         dogs: action.payload,
         alldogs: action.payload,
         detail: []
       };
-    case "GET_DOGS_BY_TEMPERAMENT":
+    case GET_DOGS_BY_TEMPERAMENT:
       return {
         ...state,
         dogs: action.payload,
       };
-    case "GET_TEMPERAMENTS":
+    case GET_TEMPERAMENTS:
       return {
         ...state,
         temperaments: action.payload,
       };
-    case "GET_DOGS_BY_NAME":
+    case GET_DOGS_BY_NAME:
       return {
         ...state,
         dogs: action.payload,
       };
-    case "GET_DOGS_BY_ID":
+    case GET_DOGS_BY_ID:
       console.log('payload detail', action.payload);
       return {
         ...state,
         detail: action.payload,
       };
-    case "FILTERS":
+    case FILTERS:
       const createFilte =
         action.payload === "created"
           ? state.alldogs.filter((db) => db.createdInDb)

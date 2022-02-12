@@ -85,7 +85,7 @@ const Form = () => {
 
   function handleSubmit(e) {
     e.preventDefault();
-    if (true) {
+    if (!errors) {
       dispatch(postDog(input));
       alert("Perro creado con éxito");
       setInput({
@@ -97,6 +97,17 @@ const Form = () => {
         image: "",
       });
       history("/home");
+    } else {
+      alert("Respuesta no válida")
+      setErrors({});
+      setInput({
+        name: "",
+        weight: "",
+        height: "",
+        temperament: "",
+        life_span: "",
+        image: "",
+      });
     }
   }
 
