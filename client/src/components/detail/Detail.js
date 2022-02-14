@@ -17,7 +17,7 @@ console.log('detail', detail);
   return (
     <main>
       <div className='container'>
-        <div className='cover'><img src={detail[0] && detail[0].image} width="500px" height="622.4px" alt='not found' /></div>
+        <div className='cover'><img src={detail[0] && detail[0].image} width="500px" height="622.4px" alt='loading...' /></div>
         <div className='content'>
           <div className='nav'>
             <span className='log'>HENRY DOGS</span>

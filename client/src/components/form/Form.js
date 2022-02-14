@@ -14,33 +14,33 @@ const validate = (input) => {
     life_span: /^\d+\s-\s\d+$/, // Numeros, espacios y guion.
   };
   if (!expresiones.name.test(input.name)) {
-    errors.name = "No se admiten números ni caracteres especiales";
+    errors.message = "Nombre no válido: No se admiten números ni caracteres especiales";
   } else if (!expresiones.image.test(input.image)) {
-    errors.image = "URL no válida";
+    errors.message = "URL no válida";
   } else if (!expresiones.height.test(input.height)) {
-    errors.height = "Formato no válido, ejemplo: (12 - 17)";
+    errors.message = "Altura no válida, ejemplo: (12 - 17)";
   } else if (
     parseInt(input.height.split(" - ").reverse()) -
       parseInt(input.height.split(" - ")) <=
     0
   ) {
-    errors.height = "El formato es: min - max";
+    errors.message = "Altura no válida: min - max";
   } else if (!expresiones.weight.test(input.weight)) {
-    errors.weight = "Formato no válido, ejemplo: (12 - 17)";
+    errors.message = "Peso no válido, ejemplo: (12 - 17)";
   } else if (
     parseInt(input.weight.split(" - ").reverse()) -
       parseInt(input.weight.split(" - ")) <=
     0
   ) {
-    errors.weight = "El formato es: min - max";
+    errors.message = "Peso no válido: min - max";
   } else if (!expresiones.life_span.test(input.life_span)) {
-    errors.life_span = "Formato no válido, ejemplo: (12 - 17)";
+    errors.message = "Años de vida no válido, ejemplo: (12 - 17)";
   } else if (
     parseInt(input.life_span.split(" - ").reverse()) -
       parseInt(input.life_span.split(" - ")) <=
     0
   ) {
-    errors.life_span = "El formato es: min - max";
+    errors.message = "Años de vida no válido: min - max";
   }
   return errors;
 };
@@ -61,7 +61,7 @@ const Form = () => {
 
   useEffect(() => {
     dispatch(getTemperaments());
-  }, []);
+  }, [dispatch]);
 
   function handleChange(e) {
     setInput({
@@ -84,8 +84,9 @@ const Form = () => {
   }
 
   function handleSubmit(e) {
+    console.log('first', errors)
     e.preventDefault();
-    if (!errors) {
+    if (Object.keys(errors).length === 0) {
       dispatch(postDog(input));
       alert("Perro creado con éxito");
       setInput({
@@ -98,16 +99,7 @@ const Form = () => {
       });
       history("/home");
     } else {
-      alert("Respuesta no válida")
-      setErrors({});
-      setInput({
-        name: "",
-        weight: "",
-        height: "",
-        temperament: "",
-        life_span: "",
-        image: "",
-      });
+      alert(errors.message)
     }
   }
 
@@ -123,7 +115,6 @@ const Form = () => {
           onChange={handleChange}
           placeholder="Ingrese el Nombre"
         />
-        {errors.name && <p>{errors.name}</p>}
         <input
           className="controls"
           type="text"
@@ -132,7 +123,6 @@ const Form = () => {
           onChange={handleChange}
           placeholder="Ingrese la Imagen"
         />
-        {errors.image && <p>{errors.image}</p>}
         <input
           className="controls"
           type="text"
@@ -141,7 +131,6 @@ const Form = () => {
           onChange={handleChange}
           placeholder="Ingrese rango de Altura"
         />
-        {errors.height && <p>{errors.height}</p>}
         <input
           className="controls"
           type="text"
@@ -150,7 +139,6 @@ const Form = () => {
           onChange={handleChange}
           placeholder="Ingrese rango de Peso"
         />
-        {errors.weight && <p>{errors.weight}</p>}
         <input
           className="controls"
           type="text"
@@ -159,7 +147,6 @@ const Form = () => {
           onChange={handleChange}
           placeholder="Ingrese Años de vida"
         />
-        {errors.life_span && <p>{errors.life_span}</p>}
         <p>Seleccione Temperamento</p>
         <select className="selects" onChange={(e) => handleSelect(e)}>
           {temperaments.map((temp) => (

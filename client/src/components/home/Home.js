@@ -62,7 +62,7 @@ const Home = () => {
             onChange={(e) => {
               setName(e.target.value);
             }}
-            placeholder="Name..."
+            placeholder="Nombre..."
             value={name}
           />
           <button className='but' onClick={(e) => handleFilterByName(e)}>Buscar</button>
