@@ -42,7 +42,9 @@ const getDbInfo = async () => {
         weight: raza.weight,
         height: raza.height,
         life_span: raza.life_span,
-        temperament: raza.temperaments[0].temperament,
+        temperament: raza.temperaments
+          .map((temp) => temp.temperament)
+          .join(", "),
         image: raza.image,
         createdInDb: raza.createdInDb,
       };
@@ -134,7 +136,6 @@ const getAllTemperament = async (req, res) => {
 const createDog = async (req, res) => {
   try {
     let { name, weight, height, life_span, temperament, image } = req.body;
-    console.log("tempString", temperament.toString());
     let newDog = await Dog.create({
       name,
       weight,
@@ -146,7 +147,6 @@ const createDog = async (req, res) => {
     let dogDb = await Temperament.findAll({
       where: { temperament: temperament },
     });
-    console.log("dogDb", dogDb);
     newDog.addTemperament(dogDb);
     res.send("Perro creado con éxito");
   } catch (error) {

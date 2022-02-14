@@ -12,7 +12,7 @@ const Detail = () => {
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getDogsById(id));
-  }, []);
+  }, [dispatch]);
 
   return (
     <main>

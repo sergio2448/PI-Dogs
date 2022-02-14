@@ -14,7 +14,8 @@ const validate = (input) => {
     life_span: /^\d+\s-\s\d+$/, // Numeros, espacios y guion.
   };
   if (!expresiones.name.test(input.name)) {
-    errors.message = "Nombre no válido: No se admiten números ni caracteres especiales";
+    errors.message =
+      "Nombre no válido: No se admiten números ni caracteres especiales";
   } else if (!expresiones.image.test(input.image)) {
     errors.message = "URL no válida";
   } else if (!expresiones.height.test(input.height)) {
@@ -54,7 +55,7 @@ const Form = () => {
     name: "",
     weight: "",
     height: "",
-    temperament: "",
+    temperament: [],
     life_span: "",
     image: "",
   });
@@ -93,13 +94,13 @@ const Form = () => {
         name: "",
         weight: "",
         height: "",
-        temperament: "",
+        temperament: [],
         life_span: "",
         image: "",
       });
       history("/home");
     } else {
-      alert(errors.message)
+      alert(errors.message);
     }
   }
 
@@ -156,9 +157,9 @@ const Form = () => {
             <option value={temp.temperament}>{temp.temperament}</option>
           ))}
         </select>
-        <ul>
+        {/* <ul>
           <li>{input.temperament && input.temperament.map((e) => e + " ")}</li>
-        </ul>
+        </ul> */}
 
         <button className="botons" type="submit">
           Registrar
