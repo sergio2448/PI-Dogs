@@ -12,7 +12,7 @@ const Detail = () => {
   useEffect(() => {
     dispatch(getDogs());
     dispatch(getDogsById(id));
-  }, [dispatch]);
+  }, [id, dispatch]);
 
   return (
     <main>
@@ -22,7 +22,7 @@ const Detail = () => {
             src={detail[0] && detail[0].image}
             width="500px"
             height="622.4px"
-            alt="loading..."
+            alt="cargando..."
           />
         </div>
         <div className="content">

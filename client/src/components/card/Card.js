@@ -4,7 +4,7 @@ import "./Card.css";
 
 const Card = ({ name, image, temperament, weight, id }) => {
   return (
-    <div className="card__perfil">
+    <div className="card__perfil" key={id}>
       <div className="card__nombre">
         <Link to={`/detail/${id}`}>
           <img className="imgc" src={image} alt="not found" />

@@ -153,13 +153,13 @@ const Form = () => {
         />
         <p>Seleccione Temperamento</p>
         <select className="selects" onChange={(e) => handleSelect(e)}>
-          {temperaments.map((temp) => (
-            <option value={temp.temperament}>{temp.temperament}</option>
+          {temperaments.map((temp, index) => (
+            <option key={index} value={temp.temperament}>{temp.temperament}</option>
           ))}
         </select>
-        {/* <ul>
+        <ul>
           <li>{input.temperament && input.temperament.map((e) => e + " ")}</li>
-        </ul> */}
+        </ul>
 
         <button className="botons" type="submit">
           Registrar

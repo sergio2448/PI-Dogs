@@ -79,19 +79,19 @@ const Home = () => {
             defaultValue="Seleccione Filtro:"
             onChange={(e) => handleFilter(e)}
           >
-            <option selected disabled>
+            <option key='0' value="Seleccione Filtro:" disabled>
               Seleccione Filtro:
             </option>
-            <option disabled>Por fuente</option>
-            <option value="All">All</option>
-            <option value="created">Db</option>
-            <option value="api">Api</option>
-            <option disabled>Alfabetico</option>
-            <option value="asc">A - Z</option>
-            <option value="desc">Z - A</option>
-            <option disabled>Por peso</option>
-            <option value="ascp">Ascendente</option>
-            <option value="descp">Descendente</option>
+            <option key='1' disabled>Por fuente</option>
+            <option key='2' value="All">All</option>
+            <option key='3' value="created">Db</option>
+            <option key='4' value="api">Api</option>
+            <option key='5' disabled>Alfabetico</option>
+            <option key='6' value="asc">A - Z</option>
+            <option key='7' value="desc">Z - A</option>
+            <option key='8' disabled>Por peso</option>
+            <option key='9' value="ascp">Ascendente</option>
+            <option key='10' value="descp">Descendente</option>
           </select>
         </div>
         <div className="filtemp">
@@ -101,11 +101,11 @@ const Home = () => {
             defaultValue="Seleccione Temperamento:"
             onChange={(e) => handleFilterByTemperament(e)}
           >
-            <option selected disabled>
+            <option key='dis' value="Seleccione Temperamento:" disabled>
               Seleccione Temperamento:
             </option>
-            {temperaments.map((temp) => (
-              <option value={temp.temperament}>{temp.temperament}</option>
+            {temperaments.map((temp, index) => (
+              <option key={index} value={temp.temperament}>{temp.temperament}</option>
             ))}
           </select>
         </div>
@@ -121,8 +121,9 @@ const Home = () => {
       </div>
       <div className="grid">
         {currentDogs &&
-          currentDogs.map((dog) => (
+          currentDogs.map((dog, index) => (
             <Card
+              key={index}
               name={dog.name}
               image={dog.image}
               temperament={dog.temperament}
