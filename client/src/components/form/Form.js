@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { getTemperaments, postDog } from "../../actions/index";
+import { getTemperaments, postDog, getDogs } from "../../actions/index";
 import "./Form.css";
 
 const validate = (input) => {
@@ -60,6 +60,7 @@ const Form = () => {
   });
 
   useEffect(() => {
+    dispatch(getDogs());
     dispatch(getTemperaments());
   }, [dispatch]);
 
@@ -84,7 +85,6 @@ const Form = () => {
   }
 
   function handleSubmit(e) {
-    console.log('first', errors)
     e.preventDefault();
     if (Object.keys(errors).length === 0) {
       dispatch(postDog(input));
