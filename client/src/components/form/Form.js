@@ -114,6 +114,7 @@ const Form = () => {
           name="name"
           onChange={handleChange}
           placeholder="Ingrese el Nombre"
+          required="required"
         />
         <input
           className="controls"
@@ -130,6 +131,7 @@ const Form = () => {
           name="height"
           onChange={handleChange}
           placeholder="Ingrese rango de Altura"
+          required="required"
         />
         <input
           className="controls"
@@ -138,6 +140,7 @@ const Form = () => {
           name="weight"
           onChange={handleChange}
           placeholder="Ingrese rango de Peso"
+          required="required"
         />
         <input
           className="controls"
