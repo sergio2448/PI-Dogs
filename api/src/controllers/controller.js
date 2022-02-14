@@ -3,54 +3,66 @@ const { Dog, Temperament } = require("../db");
 
 // De la API trae sólo la información necesaria
 const getApiInfo = async () => {
-  const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds");
-  const apiInfo = await apiUrl.data.map((raza) => {
-    return {
-      id: raza.id,
-      name: raza.name,
-      weight: raza.weight.metric,
-      height: raza.height.metric,
-      life_span: raza.life_span,
-      temperament: raza.temperament,
-      image: raza.image.url,
-    };
-  });
-  const olde = await apiInfo.filter((raza) => raza.id !== 179)
-  return olde;
+  try {
+    const apiUrl = await axios.get("https://api.thedogapi.com/v1/breeds");
+    const apiInfo = await apiUrl.data.map((raza) => {
+      return {
+        id: raza.id,
+        name: raza.name,
+        weight: raza.weight.metric,
+        height: raza.height.metric,
+        life_span: raza.life_span,
+        temperament: raza.temperament,
+        image: raza.image.url,
+      };
+    });
+    const olde = await apiInfo.filter((raza) => raza.id !== 179);
+    return olde;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 // Trae la información de la DB
 const getDbInfo = async () => {
-  const getdbInfo = await Dog.findAll({
-    include: {
-      model: Temperament,
-      attributes: ["temperament"],
-      through: {
-        attributes: [],
+  try {
+    const getdbInfo = await Dog.findAll({
+      include: {
+        model: Temperament,
+        attributes: ["temperament"],
+        through: {
+          attributes: [],
+        },
       },
-    },
-  });
-  const dbinfo = await getdbInfo.map((raza) => {
-    return {
-      id: raza.id,
-      name: raza.name,
-      weight: raza.weight,
-      height: raza.height,
-      life_span: raza.life_span,
-      temperament: raza.temperaments[0].temperament,
-      image: raza.image,
-      createdInDb: raza.createdInDb,
-    };
-  });
-  return dbinfo;
+    });
+    const dbinfo = await getdbInfo.map((raza) => {
+      return {
+        id: raza.id,
+        name: raza.name,
+        weight: raza.weight,
+        height: raza.height,
+        life_span: raza.life_span,
+        temperament: raza.temperaments[0].temperament,
+        image: raza.image,
+        createdInDb: raza.createdInDb,
+      };
+    });
+    return dbinfo;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 // Concatena la información de la api con la de la DB
 const getAllInfoDogs = async () => {
-  const apiInfo = await getApiInfo();
-  const dbInfo = await getDbInfo();
-  const infoTotal = apiInfo.concat(dbInfo);
-  return infoTotal;
+  try {
+    const apiInfo = await getApiInfo();
+    const dbInfo = await getDbInfo();
+    const infoTotal = apiInfo.concat(dbInfo);
+    return infoTotal;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 // GET --> '/dogs' y '/dogs?name='
@@ -122,7 +134,7 @@ const getAllTemperament = async (req, res) => {
 const createDog = async (req, res) => {
   try {
     let { name, weight, height, life_span, temperament, image } = req.body;
-    console.log('tempString', temperament.toString());
+    console.log("tempString", temperament.toString());
     let newDog = await Dog.create({
       name,
       weight,
@@ -134,7 +146,7 @@ const createDog = async (req, res) => {
     let dogDb = await Temperament.findAll({
       where: { temperament: temperament },
     });
-    console.log('dogDb', dogDb);
+    console.log("dogDb", dogDb);
     newDog.addTemperament(dogDb);
     res.send("Perro creado con éxito");
   } catch (error) {
@@ -149,7 +161,9 @@ const filterTemperament = async (req, res) => {
     const temperament = req.params.temperament;
     const dogsall = await getAllInfoDogs();
     let dogTemperament = dogsall.filter((dog) =>
-      dog.temperament ? dog.temperament.toLowerCase().includes(temperament.toLowerCase()) : null
+      dog.temperament
+        ? dog.temperament.toLowerCase().includes(temperament.toLowerCase())
+        : null
     );
     res.status(200).send(dogTemperament);
   } catch (error) {
