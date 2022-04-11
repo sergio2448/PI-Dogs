@@ -10,8 +10,10 @@ const Detail = () => {
   const detail = useSelector((state) => state.detail);
 
   useEffect(() => {
+    setTimeout(() => {
+      dispatch(getDogsById(id));
+    }, 800);
     dispatch(getDogs());
-    dispatch(getDogsById(id));
   }, [id, dispatch]);
 
   return (
@@ -71,3 +73,9 @@ const Detail = () => {
 };
 
 export default Detail;
+
+
+
+
+
+

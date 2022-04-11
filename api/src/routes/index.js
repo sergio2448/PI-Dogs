@@ -7,6 +7,7 @@ const {
   getAllTemperament,
   createDog,
   filterTemperament,
+  newTemperament,
 } = require("../controllers/controller");
 
 const router = Router();
@@ -23,5 +24,7 @@ router.get("/temperament", getAllTemperament);
 router.post("/dog", createDog);
 
 router.get("/filteredTemperament/:temperament", filterTemperament);
+
+router.post("/newtemp", newTemperament)
 
 module.exports = router;

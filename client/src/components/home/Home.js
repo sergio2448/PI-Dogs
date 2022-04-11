@@ -14,8 +14,9 @@ import "./Home.css";
 
 const Home = () => {
   const dispatch = useDispatch();
-  const dogsAll = useSelector((state) => state.dogs);
+  const dogsAll = useSelector((state) => state.alldogs);
   const temperaments = useSelector((state) => state.temperaments);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage, setDogsPerPage] = useState(8);
   const indexOfLastDog = currentPage * dogsPerPage;

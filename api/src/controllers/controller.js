@@ -42,6 +42,7 @@ const getDbInfo = async () => {
         weight: raza.weight,
         height: raza.height,
         life_span: raza.life_span,
+        /* array => un solo string separando por ", " */
         temperament: raza.temperaments
           .map((temp) => temp.temperament)
           .join(", "),
@@ -117,7 +118,7 @@ const getAllTemperament = async (req, res) => {
       .map((temp) => (temp ? temp.split(", ") : null))
       .flat();
     const temperamentUnique = [...new Set(arrayTemp)];
-    temperamentUnique.forEach(
+    temperamentUnique.filter(temp => temp !== null).forEach(
       async (temp) =>
         await Temperament.findOrCreate({
           where: { temperament: temp },
@@ -171,10 +172,21 @@ const filterTemperament = async (req, res) => {
   }
 };
 
+const newTemperament = async (req, res) => {
+  const tempt = req.body.temperament;
+  try {
+    const tem = await Temperament.create({ temperament: tempt})
+    res.status(201).send(tem)
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
 module.exports = {
   getAllDogs,
   getDogById,
   getAllTemperament,
   createDog,
   filterTemperament,
+  newTemperament,
 };

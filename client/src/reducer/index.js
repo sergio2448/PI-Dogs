@@ -12,6 +12,7 @@ const initialState = {
   alldogs: [],
   detail: [],
   temperaments: [],
+  dogall: [],
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -26,7 +27,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_DOGS_BY_TEMPERAMENT:
       return {
         ...state,
-        dogs: action.payload,
+        alldogs: action.payload,
       };
     case GET_TEMPERAMENTS:
       return {
@@ -36,7 +37,7 @@ const rootReducer = (state = initialState, action) => {
     case GET_DOGS_BY_NAME:
       return {
         ...state,
-        dogs: action.payload,
+        alldogs: action.payload,
       };
     case GET_DOGS_BY_ID:
       return {
@@ -105,7 +106,7 @@ const rootReducer = (state = initialState, action) => {
         : dogsByMetric;
       return {
         ...state,
-        dogs: allFilter,
+        dogsAll: allFilter,
       };
     default:
       return state;
