@@ -69,11 +69,11 @@
   color: #fff;
   border-radius: 3px;
   font-size: 20px;
-  right: -40%;
+  right: -36%;
 }
 
 .fil {
-  width: 14%;
+  width: 10.5%;
   position: absolute;
   top: 65px;
   right: 10%;
@@ -81,7 +81,7 @@
 }
 
 .filtemp {
-  width: 20%;
+  width: 12%;
   position: absolute;
   right: 20%;
   top: 65px;

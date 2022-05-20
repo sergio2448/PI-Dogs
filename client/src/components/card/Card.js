@@ -7,7 +7,7 @@ const Card = ({ name, image, temperament, weight, id }) => {
     <div className="card__perfil" key={id}>
       <div className="card__nombre">
         <Link to={`/detail/${id}`}>
-          <img className="imgc" src={image} alt="not found" />
+          <img className="imgc" src={image} alt="Loading" />
         </Link>
         <h2>{name}</h2>
         <p>{weight} (kg)</p>
@@ -15,14 +15,14 @@ const Card = ({ name, image, temperament, weight, id }) => {
       <hr />
       <div className="card__description">
         <label>
-          <strong>Temperamentos</strong>
+          <strong>Temperaments</strong>
         </label>
         <p>{temperament ? temperament : "Temperament Not Found"}</p>
       </div>
       <hr />
       <div className="card__button">
         <a className="enlace" href={`/detail/${id}`}>
-          Saber más
+          More...
         </a>
       </div>
     </div>

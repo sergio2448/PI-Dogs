@@ -103,18 +103,21 @@ const Form = () => {
       alert(errors.message);
     }
   }
-
+  
+  
+  
+  
   return (
     <div>
       <form className="form-register" onSubmit={(e) => handleSubmit(e)}>
-        <h1>Formulario de Registro</h1>
+        <h1>Registration Form</h1>
         <input
           className="controls"
           type="text"
           value={input.name}
           name="name"
           onChange={handleChange}
-          placeholder="Ingrese el Nombre"
+          placeholder="Enter the name"
           required="required"
         />
         <input
@@ -123,7 +126,7 @@ const Form = () => {
           value={input.image}
           name="image"
           onChange={handleChange}
-          placeholder="Ingrese la Imagen"
+          placeholder="Enter the image"
         />
         <input
           className="controls"
@@ -131,7 +134,7 @@ const Form = () => {
           value={input.height}
           name="height"
           onChange={handleChange}
-          placeholder="Ingrese rango de Altura"
+          placeholder="Enter height range"
           required="required"
         />
         <input
@@ -140,7 +143,7 @@ const Form = () => {
           value={input.weight}
           name="weight"
           onChange={handleChange}
-          placeholder="Ingrese rango de Peso"
+          placeholder="Enter weight range"
           required="required"
         />
         <input
@@ -149,9 +152,9 @@ const Form = () => {
           value={input.life_span}
           name="life_span"
           onChange={handleChange}
-          placeholder="Ingrese Años de vida"
+          placeholder="Years of life"
         />
-        <p>Seleccione Temperamento</p>
+        <p>Select Temperament</p>
         <select className="selects" onChange={(e) => handleSelect(e)}>
           {temperaments.map((temp, index) => (
             <option key={index} value={temp.temperament}>{temp.temperament}</option>
@@ -162,13 +165,13 @@ const Form = () => {
         </ul>
 
         <button className="botons" type="submit">
-          Registrar
+          Register
         </button>
         <Link to="/home">
-          <button className="botons">Volver</button>
+          <button className="botons">Go back</button>
         </Link>
         <p>
-          <a href="/form">Nuevo Registro</a>
+          <a href="/form">New Register</a>
         </p>
       </form>
     </div>

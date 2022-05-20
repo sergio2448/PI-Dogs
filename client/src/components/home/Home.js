@@ -15,8 +15,9 @@ import "./Home.css";
 const Home = () => {
   const dispatch = useDispatch();
   const dogsAll = useSelector((state) => state.alldogs);
+  const dogs = useSelector((state) => state.alldogs);
   const temperaments = useSelector((state) => state.temperaments);
-
+console.log('dogsAll', )
   const [currentPage, setCurrentPage] = useState(1);
   const [dogsPerPage, setDogsPerPage] = useState(8);
   const indexOfLastDog = currentPage * dogsPerPage;
@@ -63,47 +64,52 @@ const Home = () => {
             onChange={(e) => {
               setName(e.target.value);
             }}
-            placeholder="Nombre..."
+            placeholder="Name..."
             value={name}
           />
           <button className="but" onClick={(e) => handleFilterByName(e)}>
-            Buscar
+            Search
           </button>
         </div>
+
+        <button className="but" style={{backgroundColor: '#037E8C', right: '-60px' }} onClick={(e) => handleFilterByName(e)}>
+            Reset Filters
+          </button>
+
         <Link to="/form">
-          <button className="butcrea">Crear Dog</button>
+          <button className="butcrea">Create Dog</button>
         </Link>
         <div className="fil">
           <select
             className="selects"
             id="1"
-            defaultValue="Seleccione Filtro:"
+            defaultValue="Select Filter:"
             onChange={(e) => handleFilter(e)}
           >
-            <option key='0' value="Seleccione Filtro:" disabled>
-              Seleccione Filtro:
+            <option key='0' value="Select Filter:" disabled>
+            Select Filter:
             </option>
-            <option key='1' disabled>Por fuente</option>
+            <option key='1' disabled>By source</option>
             <option key='2' value="All">All</option>
             <option key='3' value="created">Db</option>
             <option key='4' value="api">Api</option>
-            <option key='5' disabled>Alfabetico</option>
+            <option key='5' disabled>Alphabetical</option>
             <option key='6' value="asc">A - Z</option>
             <option key='7' value="desc">Z - A</option>
-            <option key='8' disabled>Por peso</option>
-            <option key='9' value="ascp">Ascendente</option>
-            <option key='10' value="descp">Descendente</option>
+            <option key='8' disabled>By weight</option>
+            <option key='9' value="ascp">Upward</option>
+            <option key='10' value="descp">Falling</option>
           </select>
         </div>
         <div className="filtemp">
           <select
             className="selects"
             id="2"
-            defaultValue="Seleccione Temperamento:"
+            defaultValue="Select Temper:"
             onChange={(e) => handleFilterByTemperament(e)}
           >
-            <option key='dis' value="Seleccione Temperamento:" disabled>
-              Seleccione Temperamento:
+            <option key='dis' value="Select Temper:" disabled>
+              Select Temper:
             </option>
             {temperaments.map((temp, index) => (
               <option key={index} value={temp.temperament}>{temp.temperament}</option>

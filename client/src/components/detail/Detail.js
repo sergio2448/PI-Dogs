@@ -24,7 +24,7 @@ const Detail = () => {
             src={detail[0] && detail[0].image}
             width="500px"
             height="622.4px"
-            alt="cargando..."
+            alt="Loading..."
           />
         </div>
         <div className="content">
@@ -34,9 +34,7 @@ const Detail = () => {
           </div>
           <div className="content-body">
             <div className="pages">
-              <span>
-                <b>01</b>
-              </span>
+              <span>01</span>
               <span>02</span>
               <span>03</span>
               <span>04</span>
@@ -47,14 +45,14 @@ const Detail = () => {
                   {detail[0] && detail[0].name ? (
                     <h6>{detail[0].name}</h6>
                   ) : (
-                    <h6>Cargando...</h6>
+                    <h6>Loading...</h6>
                   )}
                 </b>
               </span>
               <div className="move">
-                <p>Peso: {detail[0] && detail[0].weight}</p>
-                <p>Altura: {detail[0] && detail[0].height}</p>
-                <p>Años de vida: {detail[0] && detail[0].life_span}</p>
+                <p>Weight: {detail[0] && detail[0].weight} (kg)</p>
+                <p>Height: {detail[0] && detail[0].height} (cm)</p>
+                <p>Years of life: {detail[0] && detail[0].life_span}</p>
               </div>
               <div className="prix">
                 <span>
@@ -62,7 +60,7 @@ const Detail = () => {
                 </span>
               </div>
               <Link to="/home">
-                <button className="botons">Volver</button>
+                <button className="botons">Go back</button>
               </Link>
             </div>
           </div>

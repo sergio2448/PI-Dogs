@@ -31,6 +31,7 @@ main{
   grid-area: content;
   background: #f2fbdd;
   display: flex;
+  height: 622.4px;
   flex-direction: column;
   align-content: center;
   justify-content: space-between;
@@ -51,6 +52,7 @@ main{
   flex-direction: row;
   margin-bottom: 34px;
   height: 80%;
+  align-items: baseline;
 }
 
 .pages{
@@ -71,7 +73,9 @@ main{
 }
 
 .black-label{
-  width: 80%;
+  width: 65%;
+  display: flex;
+  flex-direction: column;
 }
 
 .black-label p{
@@ -84,6 +88,7 @@ main{
 .title{
   font-size: 60px;
   padding-bottom: 20px;
+  align-self:center;
 }
 
 .prix{
@@ -92,6 +97,7 @@ main{
   display: flex;
   justify-content: space-between;
   border-left: 4px solid rgb(255, 177, 33);
+  align-self: center;
 }
 
 .prix span{
@@ -128,6 +134,7 @@ main{
   padding-bottom: 20px;
   padding-right: 0px;
   padding-left: 50px;
+  align-self:center;
 }
 
 .botons {
@@ -139,4 +146,5 @@ main{
   color: white;
   margin: 16px 17px;
   font-size: 16px;
+  align-self:center;
 }

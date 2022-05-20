@@ -6,33 +6,10 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
-const pgUrl = process.env.DATABASE_URL;
-console.log(pgUrl);
-sequelize = new Sequelize(pgUrl, {
-  logging: false, 
-  native: false, 
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false
-    }
-  }
-});
- 
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
-
-
-/* const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`, {
+const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/dogs`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-}); */
+});
 const basename = path.basename(__filename);
 
 const modelDefiners = [];

@@ -47,16 +47,16 @@ const rootReducer = (state = initialState, action) => {
     case FILTERS:
       const createFilte =
         action.payload === "created"
-          ? state.alldogs.filter((db) => db.createdInDb)
+          ? state.dogs.filter((db) => db.createdInDb)
           : action.payload === "api"
-          ? state.alldogs.filter((db) => !db.createdInDb)
+          ? state.dogs.filter((db) => !db.createdInDb)
           : action.payload === "All"
-          ? state.alldogs
+          ? state.dogs
           : null;
 
       const sortedAr =
         action.payload === "asc"
-          ? state.alldogs.sort(function (a, b) {
+          ? state.dogs.sort(function (a, b) {
               if (a.name > b.name) {
                 return 1;
               }
@@ -66,7 +66,7 @@ const rootReducer = (state = initialState, action) => {
               return 0;
             })
           : action.payload === "desc"
-          ? state.alldogs.sort(function (a, b) {
+          ? state.dogs.sort(function (a, b) {
               if (a.name > b.name) {
                 return -1;
               }
@@ -79,7 +79,7 @@ const rootReducer = (state = initialState, action) => {
 
       const dogsByMetric =
         action.payload === "descp"
-          ? state.alldogs.sort((a, b) => {
+          ? state.dogs.sort((a, b) => {
               if (
                 parseInt(a.weight.split(" - ").reverse().join("-")) -
                   parseInt(b.weight.split(" - ").reverse().join("-")) <
@@ -89,7 +89,7 @@ const rootReducer = (state = initialState, action) => {
               else return -1;
             })
           : action.payload === "ascp"
-          ? state.alldogs.sort((a, b) => {
+          ? state.dogs.sort((a, b) => {
               if (
                 parseInt(a.weight.split(" - ").reverse().join("-")) -
                   parseInt(b.weight.split(" - ").reverse().join("-")) >
@@ -99,14 +99,17 @@ const rootReducer = (state = initialState, action) => {
               else return -1;
             })
           : null;
+
+
       const allFilter = createFilte
         ? createFilte
         : sortedAr
         ? sortedAr
         : dogsByMetric;
+        console.log('allFilter', allFilter)
       return {
         ...state,
-        dogsAll: allFilter,
+        alldogs: allFilter,
       };
     default:
       return state;
