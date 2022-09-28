@@ -11,7 +11,7 @@ import axios from "axios";
 export function getDogs() {
   return async (dispatch) => {
     try {
-      var json_r = await axios.get("http://piboot-doggies.herokuapp.com/dogs");
+      var json_r = await axios.get("http://localhost:3001/dogs");
       return dispatch({
         type: GET_DOGS,
         payload: json_r.data,
@@ -25,9 +25,7 @@ export function getDogs() {
 export function getDogsByName(name) {
   return async (dispatch) => {
     try {
-      var json_w = await axios.get(
-        "http://piboot-doggies.herokuapp.com/dogs?name=" + name
-      );
+      var json_w = await axios.get("http://localhost:3001/dogs?name=" + name);
       return dispatch({
         type: GET_DOGS_BY_NAME,
         payload: json_w.data,
@@ -41,9 +39,7 @@ export function getDogsByName(name) {
 export function getDogsById(id) {
   return async (dispatch) => {
     try {
-      let detail = await axios.get(
-        `http://piboot-doggies.herokuapp.com/dogs/${id}`
-      );
+      let detail = await axios.get(`http://localhost:3001/dogs/${id}`);
       return dispatch({
         type: GET_DOGS_BY_ID,
         payload: detail.data,
@@ -57,10 +53,7 @@ export function getDogsById(id) {
 export function getTemperaments() {
   return async (dispatch) => {
     try {
-      var info = await axios(
-        "http://piboot-doggies.herokuapp.com/temperament",
-        {}
-      );
+      var info = await axios("http://localhost:3001/temperament", {});
       return dispatch({ type: GET_TEMPERAMENTS, payload: info.data });
     } catch (error) {
       console.log(error.message);
@@ -71,10 +64,7 @@ export function getTemperaments() {
 export function postDog(payload) {
   return async () => {
     try {
-      const response = await axios.post(
-        "http://piboot-doggies.herokuapp.com/dog",
-        payload
-      );
+      const response = await axios.post("http://localhost:3001/dog", payload);
       return response;
     } catch (error) {
       console.log(error.message);
@@ -86,7 +76,7 @@ export function getDogsByTemperament(temperament) {
   return async (dispatch) => {
     try {
       var json_f = await axios.get(
-        `http://piboot-doggies.herokuapp.com/filteredTemperament/${temperament}`
+        `http://localhost:3001/filteredTemperament/${temperament}`
       );
       return dispatch({
         type: GET_DOGS_BY_TEMPERAMENT,
